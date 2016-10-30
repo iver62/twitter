@@ -1,0 +1,13 @@
+Consumer Key (API Key)	1oUazsxLrYqK82o4VVhABXYhK
+Consumer Secret (API Secret)	aguBdxqMb2RQlISQzBLdkwJNv1TGWtYPUAeucg49MkntkcFSAo
+Access Level	Read and write (modify app permissions)
+Owner	pierr622
+Owner ID	788725938209091584
+
+Your Access Token
+This access token can be used to make API requests on your own account's behalf. Do not share your access token secret with anyone.
+Access Token	788725938209091584-RrG1yPWdlvOe8rD9OqJgNg1JrbIDw78
+Access Token Secret	Xd2vPKQ4KYH1eWHjBimUVp0Ytxhk5D8QBfLhJ66s8ih3l
+Access Level	Read and write
+Owner	pierr622
+Owner ID	788725938209091584

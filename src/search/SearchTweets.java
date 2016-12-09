@@ -26,6 +26,7 @@ public class SearchTweets {
         Twitter twitter = tf.getInstance();
         try {
         	Query query = new Query("sarkozy");
+        	query.setLang("fr");
         	QueryResult result;
         	result = twitter.search(query);
         	List<Status> tweets = result.getTweets();

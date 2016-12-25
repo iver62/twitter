@@ -7,11 +7,11 @@ import java.util.List;
 
 public class MyFileWriter {
 	
-	public static void writeData(List<String> tweets) {
+	public static void write(List<String> tweets) {
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("res.txt"));
-			for (String str : tweets) {
-				bw.write(str);
+			BufferedWriter bw = new BufferedWriter(new FileWriter("tweets.txt"));
+			for (String tw : tweets) {
+				bw.write(tweets.indexOf(tw)+1 + " " + tw);
 				bw.newLine();
 			}
 			bw.close();

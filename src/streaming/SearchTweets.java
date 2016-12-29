@@ -21,55 +21,63 @@ public class SearchTweets {
 	
 	public static void main(String[] args) throws TwitterException, IOException {
 		
-		TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
-		
-		StatusListener listener = new StatusListener() {
-	        
-			public void onStatus(Status status) {
-				if (count < 1000) {
-					if (!status.isRetweet()) {
-						String tweet = status.getText();
-						tweet = tweet.replaceAll("[\r\n]+", " ");
-						System.out.println(tweet);
-						count++;
-					}
-				}
-				else {
-					twitterStream.removeListener(this);
-					System.exit(0);
-					return;
-				}
-	        }
+		if (args.length == 1) {
+			TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
 			
-	        public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
-	        
-	        public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
-	        
-	        public void onException(Exception ex) {
-	            ex.printStackTrace();
-	        }
-	        
-			@Override
-			public void onScrubGeo(long arg0, long arg1) {
-				// TODO Auto-generated method stub
+			StatusListener listener = new StatusListener() {
+		        
+				public void onStatus(Status status) {
+					if (count < Integer.valueOf(args[0])) {
+						if (!status.isRetweet()) {
+							String tweet = status.getText();
+							tweet = tweet.replaceAll("[\r\n]+", " ");
+							System.out.println(tweet);
+							count++;
+						}
+					}
+					else {
+						twitterStream.removeListener(this);
+						System.exit(0);
+						return;
+					}
+		        }
 				
-			}
-			@Override
-			public void onStallWarning(StallWarning arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-	    };
-	    
-	    twitterStream.addListener(listener);
-	    twitterStream.setOAuthConsumer("1oUazsxLrYqK82o4VVhABXYhK", "aguBdxqMb2RQlISQzBLdkwJNv1TGWtYPUAeucg49MkntkcFSAo");
-	    twitterStream.setOAuthAccessToken(new AccessToken("788725938209091584-RrG1yPWdlvOe8rD9OqJgNg1JrbIDw78", "Xd2vPKQ4KYH1eWHjBimUVp0Ytxhk5D8QBfLhJ66s8ih3l"));
-	    
-	    String[] lang = {"fr"};
-	    FilterQuery filter = new FilterQuery();
-	    filter.track("France");
-	    filter.language(lang);
-	    twitterStream.filter(filter);    
+		        public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
+		        
+		        public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
+		        
+		        public void onException(Exception ex) {
+		            ex.printStackTrace();
+		        }
+		        
+				@Override
+				public void onScrubGeo(long arg0, long arg1) {
+					// TODO Auto-generated method stub
+					
+				}
+				@Override
+				public void onStallWarning(StallWarning arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+		    };
+		    
+		    twitterStream.addListener(listener);
+		    twitterStream.setOAuthConsumer("1oUazsxLrYqK82o4VVhABXYhK", "aguBdxqMb2RQlISQzBLdkwJNv1TGWtYPUAeucg49MkntkcFSAo");
+		    twitterStream.setOAuthAccessToken(new AccessToken("788725938209091584-RrG1yPWdlvOe8rD9OqJgNg1JrbIDw78", "Xd2vPKQ4KYH1eWHjBimUVp0Ytxhk5D8QBfLhJ66s8ih3l"));
+		    
+		    String[] lang = {"fr"};
+		    FilterQuery filter = new FilterQuery();
+		    filter.track("France");
+		    filter.language(lang);
+		    twitterStream.filter(filter);    
+		}
+		
+		else {
+			System.out.println("manque 1 argument");
+		}
+		
 	}
+	
 	
 }
